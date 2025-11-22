@@ -1,0 +1,53 @@
+<!-- <p-dialog [(visible)]="display" [style]="{width: '450px'}" [header]="title" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        
+        <div class="field">
+            <label for="departmentName">Nombre Departamento</label>
+            <input type="text" pInputText id="departmentName" [(ngModel)]="department.departmentName" required autofocus />
+            
+            <small class="p-error" *ngIf="!department.departmentName && department.departmentName !== ''">El nombre es requerido.</small>
+        </div>
+
+        <div class="field">
+            <label for="lat">Latitud</label>
+            <input type="number" pInputText id="lat" [(ngModel)]="department.lat" required step="any" />
+            
+            <small class="p-error" *ngIf="!department.lat">La latitud es requerida.</small>
+        </div>
+
+        <div class="field">
+            <label for="lng">Longitud</label>
+            <input type="number" pInputText id="lng" [(ngModel)]="department.lng" required step="any" />
+            
+            <small class="p-error" *ngIf="!department.lng">La longitud es requerida.</small>
+        </div>
+        
+        <div class="field">
+            <label for="region">Región</label>
+            <p-dropdown 
+                id="region"
+                [options]="regions" 
+                [(ngModel)]="department.idRegion" 
+                optionLabel="regionName" 
+                optionValue="idRegion" 
+                placeholder="Seleccione una región"
+                [filter]="true" 
+                filterBy="regionName"
+                appendTo="body"
+                [showClear]="true">
+            </p-dropdown>
+            
+            <small class="p-error" *ngIf="!department.idRegion">La región es requerida.</small>
+        </div>
+
+        <div class="field-checkbox" *ngIf="!isNew">
+            <p-checkbox [(ngModel)]="department.isActive" [binary]="true" inputId="binary"></p-checkbox>
+            <label for="binary" class="ml-2">Activo</label>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="display=false"></button>
+        <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text" (click)="save()" [loading]="loading"></button>
+    </ng-template>
+</p-dialog> -->

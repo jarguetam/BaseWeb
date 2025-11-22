@@ -1,0 +1,86 @@
+<div class="grid">
+    <div class="col-12 xl:col-12">
+        <div class="card">
+            <ng-template [ngIf]="loading" [ngIfElse]="showTable">
+                <skeleton-table-component [title]="title"></skeleton-table-component>
+            </ng-template>
+
+            <ng-template #showTable>
+                <p-table #dt [value]="departments" [paginator]="true" [rows]="10"
+                    responsiveLayout="scroll" styleClass="p-datatable-sm p-datatable-gridlines" 
+                    [globalFilterFields]="['idDepartment','departmentName', 'lat', 'lng', 'region.regionName']">
+                    
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="idDepartment">ID <p-sortIcon field="idDepartment"></p-sortIcon>
+                                <p-columnFilter type="text" field="idDepartment" display="menu" class="ml-auto"></p-columnFilter>
+                            </th>
+                            
+                            <th pSortableColumn="departmentName">Departamento <p-sortIcon field="departmentName"></p-sortIcon>
+                                <p-columnFilter type="text" field="departmentName" display="menu" class="ml-auto"></p-columnFilter>
+                            </th>
+
+                            <th pSortableColumn="lat">Latitud <p-sortIcon field="lat"></p-sortIcon>
+                                <p-columnFilter type="numeric" field="lat" display="menu" class="ml-auto"></p-columnFilter>
+                            </th>
+
+                            <th pSortableColumn="lng">Longitud <p-sortIcon field="lng"></p-sortIcon>
+                                <p-columnFilter type="numeric" field="lng" display="menu" class="ml-auto"></p-columnFilter>
+                            </th>
+
+                            <th pSortableColumn="region.regionName">Región <p-sortIcon field="region.regionName"></p-sortIcon>
+                                <p-columnFilter type="text" field="region.regionName" display="menu" class="ml-auto"></p-columnFilter>
+                            </th>
+
+                            <th pSortableColumn="isActive">Estado <p-sortIcon field="isActive"></p-sortIcon></th>
+                            <th>Acción</th>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="caption">
+                        <h4 class="mt-2">{{title}}</h4>
+                        <div class="flex">
+                            <button pButton class="ml-2" pRipple type="button" (click)="addDepartment()" 
+                                pTooltip="Agregar nuevo departamento" tooltipPosition="bottom" label="Agregar"></button>
+                            <span class="p-input-icon-left ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" 
+                                    placeholder="Buscar..." />
+                            </span>
+                        </div>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-department>
+                        <tr>
+                            <td style="width: 5%; min-width: 2rem;">{{department.idDepartment}}</td>
+                            
+                            <td style="width: 25%; min-width: 7rem;">{{department.departmentName}}</td>
+                            
+                            <td style="width: 15%; min-width: 5rem;">{{department.lat}}</td>
+
+                            <td style="width: 15%; min-width: 5rem;">{{department.lng}}</td>
+
+                            <td style="width: 20%; min-width: 7rem;">{{department.region?.regionName || 'N/A'}}</td>
+                            
+                            <td style="width: 10%; min-width: 4rem;">
+                                <ng-template [ngIf]="department.isActive" [ngIfElse]="inactive">
+                                    <p-chip label="Activo" styleClass="custom-chip" icon="pi pi-check"></p-chip>
+                                </ng-template>
+                                <ng-template #inactive>
+                                    <p-chip label="Inactivo" icon="pi pi-times"></p-chip>
+                                </ng-template>
+                            </td>
+
+                            <td style="width: 10%;">
+                                <button (click)="editDepartment(department)" pButton pRipple type="button" icon="pi pi-pencil" 
+                                    class="p-button p-component p-button-text p-button-icon-only"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    
+                </p-table>
+            </ng-template>
+        </div>
+    </div>
+    <department-dialog-component (departmentModify)="departmentModify($event)"></department-dialog-component>
+</div>

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Messages } from 'src/app/helpers/messages';
 import { Role } from 'src/app/models/role';
 import { RoleService } from 'src/app/service/users/role.service';
@@ -13,11 +13,11 @@ export class RoleDialogComponent implements OnInit {
     @Output() roleModify = new EventEmitter<Role[]>();
     role: Role;
     isAdd: boolean;
-    formRole: FormGroup;
+    formRole: UntypedFormGroup;
     loading: boolean = false;
     display: boolean = false;
 
-    constructor( private fb: FormBuilder, private roleService: RoleService) {}
+    constructor( private fb: UntypedFormBuilder, private roleService: RoleService) {}
 
     ngOnInit() {
     }

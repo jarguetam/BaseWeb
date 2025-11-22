@@ -76,10 +76,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "baseWeb:build:production"
+                          "buildTarget": "baseWeb:build:production"
                         },
                         "development": {
-                            "browserTarget": "baseWeb:build:development"
+                          "buildTarget": "baseWeb:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -87,7 +87,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "baseWeb:build"
+                      "buildTarget": "baseWeb:build"
                     }
                 },
                 "test": {
@@ -110,6 +110,5 @@
                 }
             }
         }
-    },
-    "defaultProject": "baseWeb"
+    }
 }

@@ -45,6 +45,14 @@ import { ListPermissionComponent } from './pages/permissions/list.permission.com
                                     './pages/permissions/permissions.module'
                                 ).then((m) => m.PermissionsModule),
                             canActivate: [AuthGuard],
+                        },
+                        {
+                            path: 'datos-maestros',
+                            loadChildren: () =>
+                                import(
+                                    './pages/data-master/data-master.module'
+                                ).then((m) => m.RegionsModule),
+                            canActivate: [AuthGuard],
                         }
                     ],
                 },

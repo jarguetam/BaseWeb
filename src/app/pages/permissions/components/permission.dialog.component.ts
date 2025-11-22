@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Messages } from 'src/app/helpers/messages';
 import { Permission } from 'src/app/models/permission';
 import { TreeNodeDto } from 'src/app/models/tree.node.dto';
@@ -18,11 +18,11 @@ export class PermissionDialogComponent implements OnInit {
     typePermissions: TypePermission[] = [];
 
     isAdd: boolean;
-    formPermission: FormGroup;
+    formPermission: UntypedFormGroup;
     loading: boolean = false;
     display: boolean = false;
 
-    constructor( private fb: FormBuilder, private permissionService: PermissionService) {}
+    constructor( private fb: UntypedFormBuilder, private permissionService: PermissionService) {}
 
     ngOnInit() {
     }

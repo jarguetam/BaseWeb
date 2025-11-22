@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Messages } from 'src/app/helpers/messages';
 import { Role } from 'src/app/models/role';
 import { Theme } from 'src/app/models/theme';
@@ -15,13 +15,13 @@ export class UserDialogComponent implements OnInit {
     @Output() userModify = new EventEmitter<User[]>();
     user: User;
     isAdd: boolean;
-    formUser: FormGroup;
+    formUser: UntypedFormGroup;
     roles: Role[] = [];
     themes: Theme[] = [];
     loading: boolean = false;
     display: boolean = false;
 
-    constructor( private fb: FormBuilder, private userService: UserService, private commonService: CommonService) {}
+    constructor( private fb: UntypedFormBuilder, private userService: UserService, private commonService: CommonService) {}
 
     ngOnInit() {
 
